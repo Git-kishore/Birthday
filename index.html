@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Birthday Envelope with Hearts</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
@@ -223,35 +223,11 @@
     transform: translate(-50%, -50%) scale(1);
   }
 
-  /* The gif container, initially hidden */
-  #birthdayGif {
-    position: fixed;
-    top: calc(50% + 6vw); /* below the birthday message */
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 60vw;
-    max-height: 40vh;
-    display: none;
-    z-index: 31;
-  }
-
-  #birthdayGif img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 15px rgba(255, 60, 120, 0.5);
-  }
-
   /* Responsive tweaks for small screens */
   @media (max-width: 400px) {
     .letter p { font-size: 0.9rem; }
     .letter button { font-size: 0.8rem; padding: 6px 12px; }
     #openBtn { font-size: 0.9rem; padding: 10px 20px; }
-    #birthdayGif {
-      max-width: 80vw;
-      max-height: 30vh;
-      top: calc(50% + 10vw);
-    }
   }
 </style>
 </head>
@@ -264,9 +240,11 @@
     <div class="flap"></div>
     <div class="letter" id="letter">
       <p class="to">To Hema,</p>
-      <p>You light up every room you enter,<br>
-         And your smile makes my world brighter.<br>
-         Wishing you a birthday as beautiful as you are!</p>
+      <p>
+        You light up every room you enter,<br>
+        And your smile makes my world brighter.<br>
+        Please click mee....
+              </p>
       <button id="clickMeeBtn">Click Mee</button>
     </div>
   </div>
@@ -276,18 +254,12 @@
 <div class="cake-container" id="cakeContainer" style="display:none;"></div>
 <div class="birthday-message" id="birthdayMsg">Happy birthday Hema!!</div>
 
-<!-- GIF container -->
-<div id="birthdayGif">
-  <img src="cute-hug.gif" alt="Cute Hug GIF" />
-</div>
-
 <script>
   const envelope = document.getElementById('envelope');
   const openBtn = document.getElementById('openBtn');
   const clickMeeBtn = document.getElementById('clickMeeBtn');
   const cakeContainer = document.getElementById('cakeContainer');
   const birthdayMsg = document.getElementById('birthdayMsg');
-  const birthdayGif = document.getElementById('birthdayGif');
   const heartsContainer = document.getElementById('heartsContainer');
 
   openBtn.addEventListener('click', () => {
@@ -300,23 +272,22 @@
     cakeContainer.style.display = 'block';
     startCakeFall();
     birthdayMsg.classList.add('show');
-    birthdayGif.style.display = 'block';  // Show the gif
   });
 
   function startCakeFall() {
     const layersCount = 30;
-    for(let i=0; i < layersCount; i++) {
+    for(let i=0;i<layersCount;i++){
       const cakeLayer = document.createElement('div');
       cakeLayer.classList.add('cake-layer');
       cakeLayer.style.left = Math.random() * window.innerWidth + 'px';
       cakeLayer.style.animationDuration = (2 + Math.random()*2) + 's';
-      cakeLayer.style.animationDelay = (i*0.15) + 's';
+      cakeLayer.style.animationDelay = (i*0.15)+'s';
       cakeContainer.appendChild(cakeLayer);
-      cakeLayer.addEventListener('animationend', () => cakeLayer.remove());
+      cakeLayer.addEventListener('animationend', ()=>cakeLayer.remove());
     }
   }
 
-  function createHeart() {
+  function createHeart(){
     const heart = document.createElement('div');
     heart.classList.add('heart');
     heart.innerHTML = "❤️";
@@ -324,7 +295,7 @@
     heart.style.fontSize = (14 + Math.random()*20) + "px";
     heart.style.animationDuration = (4 + Math.random()*4) + "s";
     heartsContainer.appendChild(heart);
-    setTimeout(() => heart.remove(), 8000);
+    setTimeout(()=>heart.remove(),8000);
   }
 
   setInterval(createHeart, 500);
