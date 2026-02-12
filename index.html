@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>Birthday Envelope with Hearts</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
@@ -223,11 +223,31 @@
     transform: translate(-50%, -50%) scale(1);
   }
 
+  #birthdayGif {
+    position: fixed;
+    top: calc(50% + 18vw); /* moved GIF further down */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25vw;
+    max-width: 150px;
+    height: auto;
+    display: none;
+    z-index: 31;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 60, 120, 0.3);
+    background: transparent;
+  }
+
   /* Responsive tweaks for small screens */
   @media (max-width: 400px) {
     .letter p { font-size: 0.9rem; }
     .letter button { font-size: 0.8rem; padding: 6px 12px; }
     #openBtn { font-size: 0.9rem; padding: 10px 20px; }
+    #birthdayGif {
+      width: 40vw;
+      max-width: 120px;
+      top: calc(50% + 22vw);
+    }
   }
 </style>
 </head>
@@ -240,11 +260,9 @@
     <div class="flap"></div>
     <div class="letter" id="letter">
       <p class="to">To Hema,</p>
-      <p>
-        You light up every room you enter,<br>
-        And your smile makes my world brighter.<br>
-        Please click mee....
-              </p>
+      <p>You light up every room you enter,<br>
+         And your smile makes my world brighter.<br>
+         Wishing you a birthday as beautiful as you are!</p>
       <button id="clickMeeBtn">Click Mee</button>
     </div>
   </div>
@@ -254,12 +272,15 @@
 <div class="cake-container" id="cakeContainer" style="display:none;"></div>
 <div class="birthday-message" id="birthdayMsg">Happy birthday Hema!!</div>
 
+<img id="birthdayGif" src="cute-hug.gif" alt="Cute Hug GIF" />
+
 <script>
   const envelope = document.getElementById('envelope');
   const openBtn = document.getElementById('openBtn');
   const clickMeeBtn = document.getElementById('clickMeeBtn');
   const cakeContainer = document.getElementById('cakeContainer');
   const birthdayMsg = document.getElementById('birthdayMsg');
+  const birthdayGif = document.getElementById('birthdayGif');
   const heartsContainer = document.getElementById('heartsContainer');
 
   openBtn.addEventListener('click', () => {
@@ -272,6 +293,7 @@
     cakeContainer.style.display = 'block';
     startCakeFall();
     birthdayMsg.classList.add('show');
+    birthdayGif.style.display = 'block';
   });
 
   function startCakeFall() {
